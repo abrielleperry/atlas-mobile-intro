@@ -1,9 +1,19 @@
+import { DatabaseProvider } from "@/components/DatabaseProvider";
+import { ActivitiesProvider } from "@/components/ActivitiesProvider";
 import { Stack } from "expo-router";
 
 export default function Layout() {
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-    </Stack>
+    <DatabaseProvider>
+      <ActivitiesProvider>
+        <Stack>
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen
+            name="add-activity-screen"
+            options={{ headerShown: false }}
+          />
+        </Stack>
+      </ActivitiesProvider>
+    </DatabaseProvider>
   );
 }
