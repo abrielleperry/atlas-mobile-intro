@@ -1,10 +1,11 @@
+import { useActivitiesContext } from "@/components/ActivitiesProvider";
 import { Link, router } from "expo-router";
 import { useState } from "react";
 import { StyleSheet, Text, View, Pressable, TextInput } from "react-native";
 
 export default function AddActivityScreen() {
   const [steps, setSteps] = useState<number>(0);
-  const { insertActivity } = useActivitiesContext();
+  const {insertActivity} = useActivitiesContext();
   return (
     <View style={styles.container}>
       <Text>Add Activity Screen</Text>
