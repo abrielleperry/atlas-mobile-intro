@@ -9,7 +9,7 @@ export default function Index() {
     <View style={styles.container}>
       {activities.map((activity) => (
         <Text key={activity.id}>
-          {activity.steps} steps on(" ")
+          {activity.steps} steps on{" "}
           {new Date(activity.date).toLocaleDateString()}
         </Text>
       ))}
