@@ -1,19 +1,21 @@
 import { useActivitiesContext } from "@/components/ActivitiesProvider";
 import { Link } from "expo-router";
 import { Alert, Text, View, StyleSheet, Pressable } from "react-native";
-import Activity from "@/components/Activity";
+import SwipableActivity from "@/components/SwipableActivity";
 import { FlashList } from "@shopify/flash-list";
+import DeleteAllButton from "@/components/DeleteAllButton";
 
 export default function Index() {
-  const { activities, deleteAllActivities } = useActivitiesContext();
+  const { activities } = useActivitiesContext();
 
   return (
     <View style={styles.container}>
       <View style={styles.list}>
         <FlashList
           data={activities}
-          renderItem={({ item }) => <Activity activity={item} />}
-          estimatedItemSize={50}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => <SwipableActivity activity={item} />}
+          estimatedItemSize={60}
           refreshing={false}
           onRefresh={() => Alert.alert("Refresh")}
           onEndReached={() => Alert.alert("End reached")}
@@ -28,15 +30,7 @@ export default function Index() {
             <Text style={styles.buttonText}>Add activity</Text>
           </Link>
         </Pressable>
-        <Pressable
-          style={[styles.button, styles.deleteButton]}
-          onPress={() => {
-            deleteAllActivities();
-            Alert.alert("All activities deleted");
-          }}
-        >
-          <Text style={styles.buttonText}>Delete All</Text>
-        </Pressable>
+        <DeleteAllButton />
       </View>
     </View>
   );

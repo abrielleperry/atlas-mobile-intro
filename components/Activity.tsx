@@ -1,4 +1,6 @@
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Pressable } from "react-native";
+import { useActivitiesContext } from "@/components/ActivitiesProvider";
+import { Swipeable } from "react-native-gesture-handler/ReanimatedSwipeable";
 
 export default function Activity({ activity }) {
   return (
@@ -17,7 +19,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#000000",
     backgroundColor: "#FFFEFE",
-    margin: 8,
     borderRadius: 8,
   },
   dateText: {
