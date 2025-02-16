@@ -1,21 +1,34 @@
 import { useActivitiesContext } from "@/components/ActivitiesProvider";
-import { useActivities } from "@/hooks/useActivities";
 import { Link } from "expo-router";
-import { Alert, Pressable, Text, View, StyleSheet } from "react-native";
+import { Alert, Text, View, StyleSheet, Pressable } from "react-native";
+import Activity from "@/components/Activity";
+import { FlashList } from "@shopify/flash-list";
 
 export default function Index() {
   const { activities } = useActivitiesContext();
+
   return (
     <View style={styles.container}>
-      {activities.map((activity) => (
-        <Text key={activity.id}>
-          {activity.steps} steps on{" "}
-          {new Date(activity.date).toLocaleDateString()}
-        </Text>
-      ))}
-      <Link style={styles.button} href={"/add-activity-screen"} replace>
-        <Text style={styles.buttonText}>Add activity</Text>
-      </Link>
+      <View style={styles.list}>
+        <FlashList
+          data={activities}
+          renderItem={({ item }) => <Activity activity={item} />}
+          estimatedItemSize={50}
+          refreshing={false}
+          onRefresh={() => Alert.alert("Refresh")}
+          onEndReached={() => Alert.alert("End reached")}
+          onEndReachedThreshold={0.5}
+          contentContainerStyle={styles.flashList}
+        />
+      </View>
+
+      <View style={styles.buttonContainer}>
+        <Pressable style={styles.button}>
+          <Link href="/add-activity-screen" replace>
+            <Text style={styles.buttonText}>Add activity</Text>
+          </Link>
+        </Pressable>
+      </View>
     </View>
   );
 }
@@ -23,20 +36,38 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: "stretch",
+    justifyContent: "flex-start",
+    paddingHorizontal: 16,
+    paddingTop: 50,
+    backgroundColor: "#FEF9E6",
+  },
+  list: {
+    flex: 1,
+    width: "100%",
+  },
+  flashList: {
+    paddingBottom: 16,
+  },
+  buttonContainer: {
+    width: "100%",
+    flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-  },
-  heading: {
-    fontSize: 24,
+    paddingVertical: 10,
   },
   button: {
     backgroundColor: "#1ED2AF",
-    color: "white",
     padding: 16,
     width: "100%",
-    textAlign: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 8,
   },
   buttonText: {
     color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+    fontSize: 16,
   },
 });

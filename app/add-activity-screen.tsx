@@ -5,27 +5,31 @@ import { StyleSheet, Text, View, Pressable, TextInput } from "react-native";
 
 export default function AddActivityScreen() {
   const [steps, setSteps] = useState<number>(0);
-  const {insertActivity} = useActivitiesContext();
+  const { insertActivity } = useActivitiesContext();
+
   return (
     <View style={styles.container}>
-      <Text>Add Activity Screen</Text>
+      <Text style={styles.addActivityScreen}>Add Activity</Text>
       <TextInput
+        style={styles.input}
         placeholder="Enter steps"
         keyboardType="number-pad"
         onChangeText={(value) => setSteps(parseInt(value))}
       />
-      <Pressable
-        style={styles.addButton}
-        onPress={() => {
-          insertActivity(steps, new Date());
-          router.push("/");
-        }}
-      >
-        <Text style={styles.buttonText}>Add activity</Text>
-      </Pressable>
-      <Link style={styles.button} href={"/"} replace>
-        <Text style={styles.buttonText}>Go back</Text>
-      </Link>
+      <View style={styles.buttonContainer}>
+        <Pressable
+          style={styles.addButton}
+          onPress={() => {
+            insertActivity(steps, new Date());
+            router.push("/");
+          }}
+        >
+          <Text style={styles.buttonText}>Add Activity</Text>
+        </Pressable>
+        <Link style={styles.backButton} href={"/"} replace>
+          <Text style={styles.buttonText}>Go Back</Text>
+        </Link>
+      </View>
     </View>
   );
 }
@@ -33,26 +37,57 @@ export default function AddActivityScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: "stretch",
     justifyContent: "center",
+    paddingHorizontal: 16,
+    paddingTop: 50,
+    backgroundColor: "#FEF9E6",
+  },
+  input: {
+    padding: 16,
+    width: "100%",
+    borderRadius: 8,
+    backgroundColor: "#FEF9E6",
+    color: "#000",
+    borderColor: "#000",
+    borderWidth: 1,
+    marginBottom: 12,
+    fontSize: 16,
+  },
+  addActivityScreen: {
+    textAlign: "center",
+    fontSize: 22,
+    fontWeight: "bold",
+    marginBottom: 16,
+  },
+  buttonContainer: {
+    width: "100%",
+    flexDirection: "column",
     alignItems: "center",
+    gap: 10,
   },
   addButton: {
     backgroundColor: "#1ED2AF",
-    color: "white",
-    padding: 16,
+    paddingVertical: 16,
+    paddingHorizontal: 20,
     width: "100%",
-    textAlign: "center",
-    marginBottom: 16,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 8,
   },
-  button: {
+  backButton: {
     backgroundColor: "#D00414",
-    color: "white",
-    padding: 16,
+    paddingVertical: 16,
+    paddingHorizontal: 20,
     width: "100%",
-    textAlign: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 8,
   },
   buttonText: {
     color: "white",
     textAlign: "center",
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });
