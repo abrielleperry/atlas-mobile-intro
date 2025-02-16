@@ -41,13 +41,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "stretch",
     justifyContent: "flex-start",
-    paddingHorizontal: 16,
     paddingTop: 50,
     backgroundColor: "#FEF9E6",
   },
   list: {
     flex: 1,
     width: "100%",
+    paddingHorizontal: 16,
   },
   flashList: {
     paddingBottom: 16,
@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingVertical: 10,
-    gap: 10,
   },
   button: {
     backgroundColor: "#1ED2AF",
@@ -66,16 +65,6 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 8,
-  },
-  deleteButton: {
-    backgroundColor: "#D00414",
-    paddingVertical: 16,
-    paddingHorizontal: 20,
-    width: "100%",
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 8,
   },
   buttonText: {
     color: "white",

@@ -47,11 +47,7 @@ const styles = StyleSheet.create({
   activityWrapper: {
     backgroundColor: "white",
     padding: 10,
-    borderRadius: 8,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
+
     elevation: 3,
     width: "100%",
   },
@@ -64,7 +60,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#D00414",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 8,
+
     height: "100%",
     width: "100%",
   },

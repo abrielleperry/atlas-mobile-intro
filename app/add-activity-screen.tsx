@@ -46,9 +46,9 @@ const styles = StyleSheet.create({
   input: {
     padding: 16,
     width: "100%",
-    borderRadius: 8,
-    backgroundColor: "#FEF9E6",
-    color: "#000",
+
+    backgroundColor: "white",
+    color: "black",
     borderColor: "#000",
     borderWidth: 1,
     marginBottom: 12,
@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "column",
     alignItems: "center",
-    gap: 10,
   },
   addButton: {
     backgroundColor: "#1ED2AF",
@@ -73,7 +72,6 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 8,
   },
   backButton: {
     backgroundColor: "#D00414",
@@ -82,7 +80,6 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 8,
   },
   buttonText: {
     color: "white",

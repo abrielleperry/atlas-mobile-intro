@@ -22,11 +22,9 @@ const styles = StyleSheet.create({
   deleteButton: {
     backgroundColor: "#D00414",
     paddingVertical: 16,
-    paddingHorizontal: 20,
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 8,
   },
   buttonText: {
     color: "white",
