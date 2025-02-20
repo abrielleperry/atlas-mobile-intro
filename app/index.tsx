@@ -15,11 +15,8 @@ export default function Index() {
           data={activities}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => <SwipableActivity activity={item} />}
-          estimatedItemSize={60}
           refreshing={false}
           onRefresh={() => Alert.alert("Refresh")}
-          onEndReached={() => Alert.alert("End reached")}
-          onEndReachedThreshold={0.5}
           contentContainerStyle={styles.flashList}
         />
       </View>
